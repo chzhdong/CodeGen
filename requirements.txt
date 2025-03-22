@@ -7,6 +7,7 @@ langsmith
 langgraph
 accelerate
 transformers
+flagembedding
 langchain-chroma
 langchain-openai
 langchain-community
