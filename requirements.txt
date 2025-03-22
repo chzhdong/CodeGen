@@ -1,3 +1,13 @@
+jq
+torch
+pandas
 langchain
+langsmith
+langgraph
+accelerate
+transformers
+langchain-chroma
 langchain-openai
 langchain-community
+langchain-huggingface
+sentence-transformers
