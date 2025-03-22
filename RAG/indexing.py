@@ -4,7 +4,7 @@ import json
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
 
-def vector_database(embedding_model, working_dir, saving_dir):
+def build_database(embedding_model, working_dir, saving_dir):
     data_paths = glob.glob(os.path.join(working_dir, "*.json"))
     docs = []
     for data_path in data_paths:
@@ -17,11 +17,11 @@ def vector_database(embedding_model, working_dir, saving_dir):
                 )
                 for item in data
             ])
-    vector_store = Chroma.from_documents(
+    chroma = Chroma.from_documents(
         documents=docs, 
         embedding=embedding_model, 
         collection_name="CodeGen", 
         persist_directory=saving_dir
     )
     print("Construct the Chroma vector database!")
-    return vector_store
+    return chroma

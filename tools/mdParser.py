@@ -2,7 +2,7 @@ import re
 from langchain_core.messages import BaseMessage
 from langchain_core.output_parsers import BaseOutputParser
 
-class MarkdownOutputParser(BaseOutputParser):
+class MarkdownParser(BaseOutputParser):
     """
     MarkdownOutputParser is a parser for markdown output.
     """

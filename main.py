@@ -1,5 +1,8 @@
 import os
-from agents.agent import py_agent
+import warnings
+from agents.agent import core
+
+warnings.filterwarnings("ignore", category=UserWarning)
 
 os.environ['LANGSMITH_TRACING']='true'
 os.environ['LANGSMITH_API_KEY']='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'
@@ -10,4 +13,4 @@ if __name__ == "__main__":
         instruction = input("Please input your instructions: \n>>> ")
         if instruction.lower() == "exit":
             break
-        py_agent(instruction)
+        core(instruction)
