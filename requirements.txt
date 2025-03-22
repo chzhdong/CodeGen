@@ -1,6 +1,7 @@
 jq
 torch
 pandas
+openai
 langchain
 langsmith
 langgraph
