@@ -1,8 +1,17 @@
-def py_checker(code: str) -> tuple[bool, str]:
+from classes.state import CodeState
+
+def py_checker(state: CodeState) -> CodeState:
+    code = state.code
     try:
         compile(code, filename="<string>", mode="exec")
-        return True, "Program is correct.\n"
+        state.passed = True
+        state.error = f"Program is correct.\n"
+        return state
     except SyntaxError as e:
-        return False, f"Program exists syntax errors: \n{e}"
+        state.passed = False
+        state.error = f"Program exists syntax errors: \n{e}"
+        return state
     except Exception as e:
-        return False, f"Program exists errors: \n{e}"
+        state.passed = False
+        state.error = f"Program exists errors: \n{e}"
+        return state
