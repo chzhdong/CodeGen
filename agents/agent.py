@@ -69,16 +69,17 @@ def core(query: str) -> None:
     graph_builder.add_edge("retrieve", "augment")
     graph_builder.add_edge("augment", "inference")
     graph_builder.add_edge("inference", "evaluate")
-    graph_builder.add_edge("evaluate", "return")
+    graph_builder.add_conditional_edges("evaluate", evaluation)
+    # graph_builder.add_edge("evaluate", "return")
     graph_builder.add_edge("return", "rectify")
     graph_builder.add_edge("rectify", "evaluate")
-    graph_builder.add_conditional_edges("evaluate", evaluation)
+    
     graph = graph_builder.compile()
 
     final_state = graph.invoke(initial_state)
 
-    print("生成的代码:\n", final_state['code'])
-    print("是否通过评估：", final_state['passed'])
+    print("Generated Code: \n", final_state['code'])
+    print("Whether pass the evaluation: ", final_state['passed'])
 
 # llm_model = ChatOpenAI(
     #     api_key="123", 
